@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listar tarefas</title>
+    <style>
+        .titulo {
+            color: rgb(46,120,230)
+        }
+        #titulo2 {
+            color: blueviolet
+        }
+        a {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="titulo">Lista de tarefas</h2>
+    <h2>Lista de tarefas</h2>
+    <ul>
+        {% for tarefa in tarefas %}
+            <li>
+                ({% if tarefa.pronta %}Pronta{% else %}Pendente{% endif %}) {{ tarefa.nome }}
+                - 
+                <a href="{% url 'tarefa_editar' tarefa.id %}">Editar</a>
+                -
+                <a href="{% url 'tarefa_deletar' tarefa.id %}">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'tarefa_criar' %}">Adicionar tarefa</a>
+</body>
+</html>
